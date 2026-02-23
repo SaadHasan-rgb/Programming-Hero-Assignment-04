@@ -1,3 +1,5 @@
+// job data
+
 let jobData = [
   { id: 1, companyName: "Mobile First Corp", position: "React Native Developer", location: "Remote", type: "Full Time", salary: "$130,000-$175,000", description: "Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.", status: "none" },
   { id: 2, companyName: "WebFlow Agency", position: "Web Designer & Developer", location: "Los Angeles, CA", type: "Part Time", salary: "$80,000 - $120,000", description: "Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.", status: "none" },
@@ -9,3 +11,16 @@ let jobData = [
   { id: 8, companyName: "TechCorp Industries", position: "Senior Frontend Developer", location: "San Francisco, CA", type: "Full Time", salary: "$130,000 - $175,000", description: "We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.", status: "none" }
 ];
 
+let currentTab = 'all';
+
+// grabbing DOM elements
+
+let cardArea = document.getElementById("cardArea");
+let totalJobs = document.getElementById("totalJobs");
+let interviewJobs = document.getElementById("interviewJobs");
+let rejectedJobs = document.getElementById("rejectedJobs");
+let jobCountT = document.getElementById("jobCount");
+
+let tabAll = document.getElementById("tabAll");
+let tabInterview = document.getElementById("tabInterview");
+let tabRejected = document.getElementById("tabRejected");

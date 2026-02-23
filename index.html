@@ -27,31 +27,31 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
     <div class="bg-white rounded-xl p-5">
       <p class="text-sm">Total Jobs</p>
-      <p class="text-xl font-bold text-blue-500">8</p>
+      <p id="totalJobs" class="text-xl font-bold text-blue-500">8</p>
     </div>
     <div class="bg-white rounded-xl p-5">
       <p class="text-sm">Interview</p>
-      <p class="text-xl font-bold text-green-500">0</p>
+      <p id="interviewJobs" class="text-xl font-bold text-green-500">0</p>
     </div>
     <div class="bg-white rounded-xl p-5">
       <p class="text-sm">Rejected</p>
-      <p class="text-xl font-bold text-red-500">0</p>
+      <p id="rejectedJobs" class="text-xl font-bold text-red-500">0</p>
     </div>
 
   </div>
   <main class="w-[90%] sm:w-[80%] mx-auto pb-10">
     <div class="flex justify-between items-center mb-5">
       <h2 class="font-bold text-[#1b2535]">Available Jobs</h2>
-      <p class="text-gray-500 text-sm">0 Jobs</p>
+      <p id="jobCount" class="text-gray-500 text-sm">0 Jobs</p>
     </div>
 
     <div class="grid grid-cols-3 gap-3 mb-6">
-      <button class="btn btn-primary w-full">All</button>
-      <button class="btn w-full">Interview</button>
-      <button class="btn w-full">Rejected</button>
+      <button id="tabAll" class="btn btn-primary w-full">All</button>
+      <button id="tabInterview" class="btn w-full">Interview</button>
+      <button id="tabRejected" class="btn w-full">Rejected</button>
     </div>
 
-    <section class="space-y-4"></section>
+    <section id="cardArea" class="space-y-4"></section>
   </main>
 
   <script src="script.js"></script>
