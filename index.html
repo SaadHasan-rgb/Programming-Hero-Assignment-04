@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,33 +13,38 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 
   <style>
-    * {
+    body {
       background: #f1f5f9;
       font-family: Arial, Helvetica, sans-serif;
     }
   </style>
 
 </head>
-<body>
-  <header class="w-[90%] sm:w-[80%] mx-auto py-6"></header>
-  <h1 class="text-2xl md:text-3xl font-bold text-[#1b2535] mb-6">
-    Job Application Tracker
-  </h1>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-    <div class="bg-white rounded-xl p-5">
-      <p class="text-sm">Total Jobs</p>
-      <p id="totalJobs" class="text-xl font-bold text-blue-500">8</p>
-    </div>
-    <div class="bg-white rounded-xl p-5">
-      <p class="text-sm">Interview</p>
-      <p id="interviewJobs" class="text-xl font-bold text-green-500">0</p>
-    </div>
-    <div class="bg-white rounded-xl p-5">
-      <p class="text-sm">Rejected</p>
-      <p id="rejectedJobs" class="text-xl font-bold text-red-500">0</p>
-    </div>
 
-  </div>
+<body>
+  <!-- Dashboard Cards-->
+  <header class="w-[90%] sm:w-[80%] mx-auto py-6">
+    <h1 class="text-2xl md:text-3xl font-bold text-[#1b2535] mb-6">
+      Job Application Tracker
+    </h1>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="bg-white rounded-xl p-5">
+        <p class="text-sm">Total Jobs</p>
+        <p id="totalJobs" class="text-xl font-bold text-blue-500">0</p>
+      </div>
+      <div class="bg-white rounded-xl p-5">
+        <p class="text-sm">Interview</p>
+        <p id="interviewJobs" class="text-xl font-bold text-green-500">0</p>
+      </div>
+      <div class="bg-white rounded-xl p-5">
+        <p class="text-sm">Rejected</p>
+        <p id="rejectedJobs" class="text-xl font-bold text-red-500">0</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Job container & Tabs -->
   <main class="w-[90%] sm:w-[80%] mx-auto pb-10">
     <div class="flex justify-between items-center mb-5">
       <h2 class="font-bold text-[#1b2535]">Available Jobs</h2>
@@ -46,14 +52,17 @@
     </div>
 
     <div class="grid grid-cols-3 gap-3 mb-6">
-      <button id="tabAll" class="btn btn-primary w-full">All</button>
-      <button id="tabInterview" class="btn w-full">Interview</button>
-      <button id="tabRejected" class="btn w-full">Rejected</button>
+      <button id="tabAll" class="btn btn-primary w-full h-10">All</button>
+      <button id="tabInterview" class="btn w-full h-10">Interview</button>
+      <button id="tabRejected" class="btn w-full h-10">Rejected</button>
     </div>
 
+    <!-- Cards will render here from JS -->
     <section id="cardArea" class="space-y-4"></section>
+  
   </main>
 
   <script src="script.js"></script>
 </body>
+
 </html>

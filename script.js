@@ -1,4 +1,4 @@
-// job data
+// Job data
 
 let jobData = [
   { id: 1, companyName: "Mobile First Corp", position: "React Native Developer", location: "Remote", type: "Full Time", salary: "$130,000-$175,000", description: "Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.", status: "none" },
@@ -11,16 +11,31 @@ let jobData = [
   { id: 8, companyName: "TechCorp Industries", position: "Senior Frontend Developer", location: "San Francisco, CA", type: "Full Time", salary: "$130,000 - $175,000", description: "We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.", status: "none" }
 ];
 
+// For tracking which tab is active
 let currentTab = 'all';
 
-// grabbing DOM elements
+// Grabbing DOM elements
 
 let cardArea = document.getElementById("cardArea");
-let totalJobs = document.getElementById("totalJobs");
-let interviewJobs = document.getElementById("interviewJobs");
-let rejectedJobs = document.getElementById("rejectedJobs");
-let jobCountT = document.getElementById("jobCount");
+let totalJobsAll = document.getElementById("totalJobs");
+let interviewJobsAll = document.getElementById("interviewJobs");
+let rejectedJobsAll = document.getElementById("rejectedJobs");
+let jobCountAll = document.getElementById("jobCount");
 
 let tabAll = document.getElementById("tabAll");
 let tabInterview = document.getElementById("tabInterview");
 let tabRejected = document.getElementById("tabRejected");
+
+// Returns badge text & Color
+
+function getBadgeInfo(status) {
+  if (status === "interview") {
+    return { text: "Interview", color: "bg-green-200" };
+  } else if (status === "rejected") {
+    return { text: "Rejected", color: "bg-red-200" };
+  } else {
+    return { text: "Not Applied", color: "bg-slate-200" };
+  }
+}
+
+
