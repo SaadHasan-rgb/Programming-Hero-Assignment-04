@@ -90,7 +90,7 @@ function updateCounts() {
   let interviewCount = 0;
   let rejectedCount = 0;
 
- 
+
   for (let job of jobData) {
     if (job.status === "interview") {
       interviewCount++;
@@ -103,7 +103,7 @@ function updateCounts() {
   interviewJobsAll.innerText = interviewCount;
   rejectedJobsAll.innerText = rejectedCount;
 
-// Updating right side text based on active tab
+  // Updating right side text based on active tab
 
   if (currentTab === "all") {
     jobCountAll.innerText = jobData.length + " jobs";
@@ -126,7 +126,7 @@ function showJobs() {
 
   let filtered = [];
 
-// Filtering based on active tab
+  // Filtering based on active tab
   if (currentTab === "all") {
     filtered = jobData;
   } else {
@@ -137,19 +137,19 @@ function showJobs() {
     }
   }
 
-//Empty State
+  //Empty State
 
   if (filtered.length === 0) {
     cardArea.innerHTML = `
       <div class="bg-white p-12 rounded-xl text-center">
         <i class="fa-regular fa-folder-open text-4xl mb-3"></i>
         <h3 class="font-semibold">No jobs available</h3>
-        <p class="text-sm text-gray-500">Please change tab or add status.</p>
+        <p class="text-sm text-gray-500">Check back soon for new job opportunities.</p>
       </div>
     `;
   } else {
 
-//Rendering each job card
+    //Rendering each job card
 
     for (let job of filtered) {
       let card = createJobCard(job);
