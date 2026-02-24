@@ -38,7 +38,7 @@ function getBadgeInfo(status) {
   }
 }
 
-// Created job card & Actions
+// Job card & Actions
 
 function createJobCard(job) {
   let badge = getBadgeInfo(job.status);
@@ -83,3 +83,144 @@ function createJobCard(job) {
   return wrapper;
 }
 
+// Rendering jobs on screen
+
+function showJobs() {
+
+  cardArea.innerHTML = "";
+
+  let filtered = [];
+
+// Filtering based on active tab
+  if (currentTab === "all") {
+    filtered = jobData;
+  } else {
+    for (let job of jobData) {
+      if (job.status === currentTab) {
+        filtered.push(job);
+      }
+    }
+  }
+
+//Empty State
+
+  if (filtered.length === 0) {
+    cardArea.innerHTML = `
+      <div class="bg-white p-12 rounded-xl text-center">
+        <i class="fa-regular fa-folder-open text-4xl mb-3"></i>
+        <h3 class="font-semibold">No jobs available</h3>
+        <p class="text-sm text-gray-500">Please change tab or add status.</p>
+      </div>
+    `;
+  } else {
+
+//Rendering each job card
+
+    for (let job of filtered) {
+      let card = createJobCard(job);
+      cardArea.appendChild(card);
+    }
+  }
+
+  updateNumbers();
+}
+
+// Counts interview and rejected jobs and updating dashboard
+
+function updateNumbers() {
+
+  let interviewCount = 0;
+  let rejectedCount = 0;
+
+ 
+  for (let job of jobData) {
+    if (job.status === "interview") {
+      interviewCount++;
+    } else if (job.status === "rejected") {
+      rejectedCount++;
+    }
+  }
+
+  totalJobsAll.innerText = jobData.length;
+  interviewJobsAll.innerText = interviewCount;
+  rejectedJobsAll.innerText = rejectedCount;
+
+// Updating right side text based on active tab
+
+  if (currentTab === "all") {
+    jobCountAll.innerText = jobData.length + " jobs";
+  } else if (currentTab === "interview") {
+    jobCountAll.innerText =
+      interviewCount + " of " + jobData.length;
+  } else {
+    jobCountAll.innerText =
+      rejectedCount + " of " + jobData.length;
+  }
+}
+
+// Changing Status
+
+function changeStatus(id, newStatus) {
+
+  for (let job of jobData) {
+    if (job.id === id) {
+      job.status = newStatus;
+      break;
+    }
+  }
+
+  showJobs();
+}
+
+// Removes job from array
+
+function removeJob(id) {
+
+  let newArray = [];
+
+  for (let job of jobData) {
+    if (job.id !== id) {
+      newArray.push(job);
+    }
+  }
+
+  jobData = newArray;
+  showJobs();
+}
+
+// Tab Switching
+
+function setActiveTabStyle(activeBtn) {
+  tabAll.classList.remove("btn-primary");
+  tabInterview.classList.remove("btn-primary");
+  tabRejected.classList.remove("btn-primary");
+
+  activeBtn.classList.add("btn-primary");
+}
+
+// All tab
+
+tabAll.onclick = function () {
+  currentTab = "all";
+  setActiveTabStyle(tabAll);
+  showJobs();
+};
+
+// Interview tab
+
+tabInterview.onclick = function () {
+  currentTab = "interview";
+  setActiveTabStyle(tabInterview);
+  showJobs();
+};
+
+// Rejected tab
+
+tabRejected.onclick = function () {
+  currentTab = "rejected";
+  setActiveTabStyle(tabRejected);
+  showJobs();
+};
+
+// Initial Render
+showJobs();
