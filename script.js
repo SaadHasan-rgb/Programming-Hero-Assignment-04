@@ -83,6 +83,41 @@ function createJobCard(job) {
   return wrapper;
 }
 
+// Counts interview and rejected jobs and updating dashboard
+
+function updateCounts() {
+
+  let interviewCount = 0;
+  let rejectedCount = 0;
+
+ 
+  for (let job of jobData) {
+    if (job.status === "interview") {
+      interviewCount++;
+    } else if (job.status === "rejected") {
+      rejectedCount++;
+    }
+  }
+
+  totalJobsAll.innerText = jobData.length;
+  interviewJobsAll.innerText = interviewCount;
+  rejectedJobsAll.innerText = rejectedCount;
+
+// Updating right side text based on active tab
+
+  if (currentTab === "all") {
+    jobCountAll.innerText = jobData.length + " jobs";
+  } else if (currentTab === "interview") {
+    jobCountAll.innerText =
+      interviewCount + " of " + jobData.length;
+  } else {
+    jobCountAll.innerText =
+      rejectedCount + " of " + jobData.length;
+  }
+}
+
+
+
 // Rendering jobs on screen
 
 function showJobs() {
@@ -122,41 +157,10 @@ function showJobs() {
     }
   }
 
-  updateNumbers();
+  updateCounts();
 }
 
-// Counts interview and rejected jobs and updating dashboard
 
-function updateNumbers() {
-
-  let interviewCount = 0;
-  let rejectedCount = 0;
-
- 
-  for (let job of jobData) {
-    if (job.status === "interview") {
-      interviewCount++;
-    } else if (job.status === "rejected") {
-      rejectedCount++;
-    }
-  }
-
-  totalJobsAll.innerText = jobData.length;
-  interviewJobsAll.innerText = interviewCount;
-  rejectedJobsAll.innerText = rejectedCount;
-
-// Updating right side text based on active tab
-
-  if (currentTab === "all") {
-    jobCountAll.innerText = jobData.length + " jobs";
-  } else if (currentTab === "interview") {
-    jobCountAll.innerText =
-      interviewCount + " of " + jobData.length;
-  } else {
-    jobCountAll.innerText =
-      rejectedCount + " of " + jobData.length;
-  }
-}
 
 // Changing Status
 
@@ -190,7 +194,7 @@ function removeJob(id) {
 
 // Tab Switching
 
-function setActiveTabStyle(activeBtn) {
+function setActiveTab(activeBtn) {
   tabAll.classList.remove("btn-primary");
   tabInterview.classList.remove("btn-primary");
   tabRejected.classList.remove("btn-primary");
@@ -202,7 +206,7 @@ function setActiveTabStyle(activeBtn) {
 
 tabAll.onclick = function () {
   currentTab = "all";
-  setActiveTabStyle(tabAll);
+  setActiveTab(tabAll);
   showJobs();
 };
 
@@ -210,7 +214,7 @@ tabAll.onclick = function () {
 
 tabInterview.onclick = function () {
   currentTab = "interview";
-  setActiveTabStyle(tabInterview);
+  setActiveTab(tabInterview);
   showJobs();
 };
 
@@ -218,7 +222,7 @@ tabInterview.onclick = function () {
 
 tabRejected.onclick = function () {
   currentTab = "rejected";
-  setActiveTabStyle(tabRejected);
+  setActiveTab(tabRejected);
   showJobs();
 };
 
